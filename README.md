@@ -39,7 +39,7 @@ If you wish to explore or modify the source code:
 1. Clone the repository:
 
    ```bash
-      git clone https://github.com/Temka193/InfinityCraft.git
+      git clone https://github.com/breineng/InfinityCraft.git
    ```
 3. Open the project in Unity (version 2022.3 or higher).
 4. Open and run the *Simple Garage/Scenes/Garage Scene*.
