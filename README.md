@@ -15,9 +15,9 @@ At the start of the game, you will be prompted to log in to **Genie** and option
 
 ## Download and Play the Build
 
-You can download the ready-to-play build from the [Releases](https://github.com/breineng/InfinityCraft/releases) section.
+You can download the ready-to-play build from the [Releases](https://github.com/breineng/InfinityCraftAIUnity/releases) section.
 
-1. Go to the [Releases](https://github.com/breineng/InfinityCraft/releases) page.
+1. Go to the [Releases](https://github.com/breineng/InfinityCraftAIUnity/releases) page.
 2. Download the latest build.
 3. Unzip the downloaded file.
 4. Run the **InfinityCraft.exe** to start the game.
@@ -39,7 +39,7 @@ If you wish to explore or modify the source code:
 1. Clone the repository:
 
    ```bash
-      git clone https://github.com/breineng/InfinityCraft.git
+      git clone https://github.com/breineng/InfinityCraftAIUnity.git
    ```
 3. Open the project in Unity (version 2022.3 or higher).
 4. Open and run the *Simple Garage/Scenes/Garage Scene*.
