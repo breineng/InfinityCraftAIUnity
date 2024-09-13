@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: ddb9295558debd040818c61f2f32bdc5
+labels:
+- Physics
+- Sound
+- Audio
+- Impact
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - SoundMaterial: {instanceID: 0}
+  - ImpactAudio: {fileID: 8212558, guid: bdac02d039e6c2f4dae6e3e57d2da17d, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
