@@ -15,9 +15,9 @@ At the start of the game, you will be prompted to log in to **Genie** and option
 
 ## Download and Play the Build
 
-You can download the ready-to-play build from the [Releases](https://github.com/Temka193/InfinityCraft/releases) section.
+You can download the ready-to-play build from the [Releases](https://github.com/breineng/InfinityCraft/releases) section.
 
-1. Go to the [Releases](https://github.com/Temka193/InfinityCraft/releases) page.
+1. Go to the [Releases](https://github.com/breineng/InfinityCraft/releases) page.
 2. Download the latest build.
 3. Unzip the downloaded file.
 4. Run the **InfinityCraft.exe** to start the game.
@@ -52,7 +52,7 @@ If you wish to explore or modify the source code:
 
 ## Used Assets
 
-- [LumaAI Genie C# Library](https://github.com/Temka193/LumaAIGenieSharp)
+- [LumaAI Genie C# Library](https://github.com/breineng/LumaAIGenieSharp)
 - [Advanced-FirstPerson-Controller](https://github.com/moe4b-professional/Advanced-FirstPerson-Controller)
 - [Runtime OBJ Importer](https://assetstore.unity.com/packages/tools/modeling/runtime-obj-importer-49547)
 - [PhysSound Physics Audio System](https://discussions.unity.com/t/open-source-physsound-physics-audio-system/585439)
