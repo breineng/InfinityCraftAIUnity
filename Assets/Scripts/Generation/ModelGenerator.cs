@@ -92,6 +92,8 @@ namespace InfinityCraft.Generation
         public async Task<ItemResponse> CreatePromptAsync(string prompt)
         {
             ApiResponse apiResponse = await _gptClient.Completions(_gptInstructions, prompt);
+            if(apiResponse == null)
+                return null;
             var itemResponse = JsonConvert.DeserializeObject<ItemResponse>(apiResponse.Choices[0].Message.Content);
             return itemResponse;
         }

@@ -32,7 +32,7 @@ namespace InfinityCraft.Managers
 
         public static bool IsOpenAIKeyValid
         {
-            get => GetBool(OPENAI_VALID_KEY, true);
+            get => GetBool(OPENAI_VALID_KEY, false);
             set => SetBool(OPENAI_VALID_KEY, value);
         }
 
