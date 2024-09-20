@@ -7,11 +7,12 @@ This repository contains a Unity project of a demo game that showcases item gene
 In the game, you can combine two items to generate a new one:
 
 - **3D Model Generation**: Uses the **Genie** neural network by **Luma AI**.
-- **Item Name Generation**: Utilizes **ChatGPT 4o-mini**.
+- **First Item Name Generation**: Utilizes **ChatGPT 4o-mini**.
+- **Second Item Name Generation**: Utilizes **BlackboxAI any-model**.
 - **Physical Properties**: Assigned using **PhysicsMaterial**.
 - **Sound Effects**: Appropriate falling sounds are selected by the neural network.
 
-At the start of the game, you will be prompted to log in to **Genie** and optionally enter your **OpenAI Key**.
+At the start of the game, you will be prompted to log in to **Genie** and optionally enter your **OpenAI Key**, if you don't game will use free **BlackboxAI** model.
 
 ## Download and Play the Build
 
