@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Dummiesman;
 using InfinityCraft.Managers;
 using InfinityCraft.OpenAI;
+using InfinityCraft.BlackboxAI;
 using LumaGenie;
 using LumaGenie.Data.Convert;
 using LumaGenie.Data.Creation;
@@ -19,6 +20,7 @@ namespace InfinityCraft.Generation
         private Material _material;
         [SerializeField]
         private string _gptInstructions = "Come up with an item that would result from combining two items listed below. The response should only include the name of the item that makes sense as a prompt.\nChoose the most appropriate material from the list: 0 - Basketball, 1 - Brick, 2 - Metal, 3 - Plastic, 4 - Rock\nbounciness, dynamicFriction, staticFriction are properties of a physical material in Unity, float values from 0 to 1.\nThe response format should be valid JSON: {\"name\": \"<item name>\", \"soundMaterial\": <material index>, \"bounciness\": <bounciness>, \"dynamicFriction\": <dynamicFriction>, \"staticFriction\": <staticFriction>}";
+        private string _blackInstructions = "The response should ONLY INCLUDE OUTPUT IN JSON FORMAT. ONLY JSON TEXT, WITHOUT 'There is JSON format'. Come up with an item that would result from combining two items listed below. \nChoose the most appropriate material from the list: 0 - Basketball, 1 - Brick, 2 - Metal, 3 - Plastic, 4 - Rock\nbounciness, dynamicFriction, staticFriction are properties of a physical material in Unity, float values from 0 to 1.\nThe response format should be valid JSON: {\"name\": \"<item name>\", \"soundMaterial\": <material index>, \"bounciness\": <bounciness>, \"dynamicFriction\": <dynamicFriction>, \"staticFriction\": <staticFriction>}"; //Some SCREEEEEEEEAM
 
         public event Action<GameObject> OnModelLoaded;
         public bool IsGenerating { get; private set; }
@@ -26,7 +28,8 @@ namespace InfinityCraft.Generation
         private GenieClient _genieClient;
         private GptClient _gptClient;
         private Material _instanceMaterial;
-        
+        private BlackBoxCompletion _blackBoxCompletion;
+
         private void Awake()
         {
             string token = SettingsManager.GenieToken;
@@ -34,7 +37,9 @@ namespace InfinityCraft.Generation
 
             string apiKey = SettingsManager.OpenAIKey;
             _gptClient = new GptClient(apiKey);
-            
+
+            _blackBoxCompletion = new BlackBoxCompletion();
+
             SettingsManager.OnSettingsChanged += OnSettingsChanged;
         }
 
@@ -89,12 +94,26 @@ namespace InfinityCraft.Generation
             return true;
         }
         
-        public async Task<ItemResponse> CreatePromptAsync(string prompt)
+        public async Task<ItemResponse> CreateOpenAIPromptAsync(string prompt)
         {
             ApiResponse apiResponse = await _gptClient.Completions(_gptInstructions, prompt);
             if(apiResponse == null)
                 return null;
-            var itemResponse = JsonConvert.DeserializeObject<ItemResponse>(apiResponse.Choices[0].Message.Content);
+            string message = apiResponse.Choices[0].Message.Content;
+
+            Debug.Log(message);
+            var itemResponse = JsonConvert.DeserializeObject<ItemResponse>(message);
+            return itemResponse;
+        }
+
+        public async Task<ItemResponse> CreateBlackboxAIPromptAsync(string prompt)
+        {
+            string apiResponse = await _blackBoxCompletion.Create(prompt + " " + _blackInstructions);
+            if (apiResponse == null)
+                return null;
+
+            Debug.Log(apiResponse);
+            var itemResponse = JsonConvert.DeserializeObject<ItemResponse>(apiResponse);
             return itemResponse;
         }
 
