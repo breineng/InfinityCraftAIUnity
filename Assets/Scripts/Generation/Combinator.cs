@@ -156,17 +156,18 @@ namespace InfinityCraft.Generation
             _startCombineTime = Time.time;
 
             string prompt = _blueItemContainer.Item.Name + " + " + _yellowItemContainer.Item.Name;
+            ItemResponse generatedInfo;
             if (SettingsManager.IsOpenAIKeyValid)
             {
-                ItemResponse generatedInfo = await _modelGenerator.CreatePromptAsync(prompt);
-                _lastGeneratedInfo = generatedInfo;
-                if (generatedInfo != null)
-                    prompt = generatedInfo.Name;
+                generatedInfo = await _modelGenerator.CreateOpenAIPromptAsync(prompt);
             }
             else
             {
-                _lastGeneratedInfo = null;
+                generatedInfo = await _modelGenerator.CreateBlackboxAIPromptAsync(prompt);
             }
+            _lastGeneratedInfo = generatedInfo;
+            if (generatedInfo != null)
+                prompt = generatedInfo.Name;
 
             _lastPrompt = prompt;
             bool success = await _modelGenerator.TryGenerate(_lastPrompt);
